@@ -42,7 +42,7 @@
             "32": "assets/ext-icon.png"
         },
         "default_title": "My YouTube Video Bookmarks",
-        "default_popup": "popup.html"  /*needs to change*/
+        "default_popup": "popup.html"  //needs to change
     },
     "manifest_version": 3
 }
