@@ -1,7 +1,7 @@
 import { getActiveTabURL } from "./utils.js";
 
 //adding a new bookmark rows to the popup
-const addNewBookmark = (bookmarksElement, bookmark) => {
+const addNewBookmark = (bookmarks, bookmark) => {
     const bookmarkTitleElement = document.createElement("div");
     const newBookmarkElement = document.createElement("div");
     const controlsElement = document.createElement("div");
@@ -20,7 +20,7 @@ const addNewBookmark = (bookmarksElement, bookmark) => {
 
     newBookmarkElement.appendChild(bookmarkTitleElement);
     newBookmarkElement.appendChild(controlsElement);
-    bookmarksElement.appendChild(newBookmarkElement);
+    bookmarks.appendChild(newBookmarkElement);
 };
 
 const viewBookmarks = (currentBookmarks = []) => {
@@ -35,6 +35,7 @@ const viewBookmarks = (currentBookmarks = []) => {
     } else {
         bookmarksElement.innerHTML = '<i class="row">No bookmarks yet</i>';
     }
+    return;
 };
 
 const onPlay = async e => {
@@ -67,10 +68,9 @@ const setBookmarkAttributes = (src, eventListener, controlParentElement) => {
     controlElement.title = src;
     controlElement.addEventListener("click", eventListener);
     controlParentElement.appendChild(controlElement);
-
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const activeTab = await getActiveTabURL();
     const queryParameters = activeTab.url.split("?")[1];
     const urlParameters = new URLSearchParams(queryParameters);
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const currentVideoBookmarks = data[currentVideo] ? JSON.parse(data[currentVideo]) : [];
 
             viewBookmarks(currentVideoBookmarks);
-        })
+        });
     } else {
         const container = document.getElementsByClassName("container")[0];
         container.innerHTML = '<div class="title">This is not a YouTube Page.</div>';
