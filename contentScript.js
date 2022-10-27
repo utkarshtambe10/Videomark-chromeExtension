@@ -15,7 +15,7 @@
         const currentTime = youtubePlayer.currentTime;
         const newBookmark = {
             time: currentTime,
-            desc: "Bookmark at" + getTime(currentTime)
+            desc: "Bookmark at " + getTime(currentTime)
         };
         currentVideoBookmarks = await fetchBookmarks();
 
@@ -33,7 +33,8 @@
 
             bookmarkBtn.src = chrome.runtime.getURL("assets/bookmark.png");
             bookmarkBtn.className = "ytp-button" + "bookmark-btn";
-            bookmarkBtn.title = "Click to bookmark the current timestamp of the video";
+            bookmarkBtn.title = "Click to Bookmark the Current Timestamp of the Video";
+            bookmarkBtn.style.cursor = "pointer";
 
             youtubeLeftControls = document.getElementsByClassName("ytp-left-controls")[0];
             youtubePlayer = document.getElementsByClassName('video-stream')[0];
@@ -70,5 +71,5 @@ const getTime = t => {
     var date = new Date(0);
     date.setSeconds(t);
 
-    return date.toISOString().substring(11, 8);
+    return date.toISOString().substr(11, 8);
 };

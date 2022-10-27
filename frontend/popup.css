@@ -1,12 +1,14 @@
 .container {
     width: 280px;
-    color: #314d3e;
+    background-color: #000000;
 }
   
 .title {
     font-size: 14px;
     font-weight: bold;
     padding: 8px;
+    color: #ffffff;
+    margin-bottom: -5px;
 }
   
 .textbox {
@@ -28,17 +30,18 @@
   
 .bookmark {
     display: flex;
-    border-bottom-color: #00254d;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-radius: 0.8rem;
+    border-radius: 5px;
+    border: 2px solid #ffffff;
     padding: 3px;
+    width: 250px;
+    height: 15px;
     padding-bottom: 7px;
     margin-bottom: 7px;
 }
   
 .bookmark-title {
     padding-left: 2px;
+    color: #ffffff;
 }
   
 .bookmark-controls img {

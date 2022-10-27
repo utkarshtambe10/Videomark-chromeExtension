@@ -49,9 +49,9 @@ const onPlay = async e => {
 };
 
 const onDelete = async e => {
-    const activeTab = await getActiveTabURL();
     const bookmarkTime = e.target.parentNode.parentNode.getAttribute("timestamp");
     const bookmarkElementToDelete = document.getElementById("bookmark-" + bookmarkTime);
+    const activeTab = await getActiveTabURL();
 
     bookmarkElementToDelete.parentNode.removeChild(bookmarkElementToDelete);
 
@@ -85,6 +85,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     } else {
         const container = document.getElementsByClassName("container")[0];
-        container.innerHTML = '<div class="title">This is not a YouTube Page.</div>';
+        container.innerHTML = '<div class="title" >This is not a YouTube Page. 🚫</div>';
     }
 });
