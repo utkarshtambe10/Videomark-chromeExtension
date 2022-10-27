@@ -13,12 +13,12 @@
     });
 
     const fetchBookmarks = () => {
-        return new Promis((resolve) => {
-            chrome.storage.sync.get([curreentVideo], (obj) => {
+        return new Promise((resolve) => {
+            chrome.storage.sync.get([currentVideo], (obj) => {
                 resolve(obj[currentVideo] ? JSON.parse(obj[currentVideo]) : []);
             });
         });
-    }
+    };
 
     const newVideoLoaded = async () => {
         const bookmarkBtnExists = document.getElementsByClassName("bookmark-btn")[0];
@@ -63,5 +63,5 @@ const getTime = t => {
     var date = new Date(0);
     date.setSeconds(t);
 
-    return date.toISOString().substr(11, 8);
+    return date.toISOString().substring(11, 8);
 };
