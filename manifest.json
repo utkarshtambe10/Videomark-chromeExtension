@@ -1,48 +1,31 @@
 {
-    "name": "Videomarks - My YouTube Bookmarks",
+    "name": "Videomarks - My YT Video Bookmarks",
     "version": "1.0.0",
-    "description": "Saving timestamps of YouTube videos for the users reference",
-    "permissions": [
-        "storage",
-        "tabs"
-    ],
-    "host_permissions": [
-        "https://*.youtube.com/*"
-    ],
+    "manifest_version": 3,
+    "description": "Saving timestamps of YouTube videos for the users reference and convenience of their work!!",
+    "permissions": ["storage", "tabs"],
+    "host_permissions": ["https://*.youtube.com/*"],
     "background": {
         "service_worker": "background.js"
     },
     "content_scripts": [
         {
-            "matches": [
-                "https://*.youtube.com/*"
-            ],
-            "js": [
-                "contentScript.js"
-            ]
+            "matches": ["https://*.youtube.com/*"],
+            "js": ["contentScript.js"]
         }
     ],
     "web_accessible_resources": [
         {
-            "resources": [
-                "assets/bookmark.png",
-                "assets/play.png",
-                "assets/delete.png",
-                "assets/save.png"
-            ],
-            "matches": [
-                "https://*.youtube.com/*"
-            ]
+            "resources": ["assets/bookmark.png", "assets/play.png", "assets/delete.png"],
+            "matches": ["https://*.youtube.com/*"]
         }
     ],
     "action": {
-        "default_icon": {
-            "16": "assets/ext-icon.png",
-            "24": "assets/ext-icon.png",
-            "32": "assets/ext-icon.png"
-        },
         "default_title": "My YouTube Video Bookmarks",
-        "default_popup": "frontend/popup.html"
+        "default_popup": "./popup.html",
+        "default_icon": "assets/logo.png"
     },
-    "manifest_version": 3
+    "icons": {
+        "128": "assets/logo.png"
+    }
 }

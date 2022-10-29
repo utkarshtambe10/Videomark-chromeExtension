@@ -1,7 +1,7 @@
 import { getActiveTabURL } from "./utils.js";
 
 //adding a new bookmark rows to the popup
-const addNewBookmark = (bookmarks, bookmark) => {
+const addNewBookmark = (bookmarksElement, bookmark) => {
     const bookmarkTitleElement = document.createElement("div");
     const newBookmarkElement = document.createElement("div");
     const controlsElement = document.createElement("div");
@@ -33,7 +33,7 @@ const viewBookmarks = (currentBookmarks = []) => {
             addNewBookmark(bookmarksElement, bookmark);
         }
     } else {
-        bookmarksElement.innerHTML = '<i class="row">No bookmarks yet</i>';
+        bookmarksElement.innerHTML = '<i class="row" style="color:white;">No bookmarks yet</i>';
     }
     return;
 };
@@ -49,9 +49,9 @@ const onPlay = async e => {
 };
 
 const onDelete = async e => {
+    const activeTab = await getActiveTabURL();
     const bookmarkTime = e.target.parentNode.parentNode.getAttribute("timestamp");
     const bookmarkElementToDelete = document.getElementById("bookmark-" + bookmarkTime);
-    const activeTab = await getActiveTabURL();
 
     bookmarkElementToDelete.parentNode.removeChild(bookmarkElementToDelete);
 
